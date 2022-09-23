@@ -1,0 +1,9 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/wonderland-dev?useSSL=false&serverTimezone=Asia/Seoul
+    username: test
+    password: test
