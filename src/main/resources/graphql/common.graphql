@@ -1,0 +1,19 @@
+schema {
+    query: Query,
+    mutation: Mutation,
+}
+
+type Query {
+    getPosts(count: Int, offset: Int): [Post]
+}
+
+type Mutation {
+    createPost(post: String): Post
+}
+
+type Post {
+    postId: Float,
+    title: String,
+    category: String,
+    authorId: String
+}

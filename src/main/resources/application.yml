@@ -1,6 +1,12 @@
 server:
   port: 8081
 
+graphql:
+  servlet:
+    enabled: true
+  tools:
+    schema-location-pattern: "**/*.graphql"
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
