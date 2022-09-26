@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.7.4"
+	id("org.springframework.boot") version "2.6.3"
 	id("io.spring.dependency-management") version "1.0.14.RELEASE"
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
@@ -23,18 +23,21 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-graphql")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("mysql:mysql-connector-java")
-	annotationProcessor("org.projectlombok:lombok")
+
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+	implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:6.0.1") //graphql
+	runtimeOnly("com.graphql-java-kickstart:graphiql-spring-boot-starter:6.0.1")   //graphql
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework:spring-webflux")
-	testImplementation("org.springframework.graphql:spring-graphql-test")
+
+	compileOnly("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
 }
 
 tasks.withType<KotlinCompile> {
