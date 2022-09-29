@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component
 @Component
 @RequiredArgsConstructor
 class PostResolver:GraphQLResolver<Post> {
-//    private val postRepository: PostRepository? = null
 
 
 }

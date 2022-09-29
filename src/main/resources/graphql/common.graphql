@@ -5,15 +5,19 @@ schema {
 
 type Query {
     getPosts(count: Int, offset: Int): [Post]
+    getPost(postId: ID!): Post
 }
 
 type Mutation {
-    createPost(post: String): Post
+    createPost(
+        title: String!,
+        category: String!,
+        authorId: String!): Post
 }
 
 type Post {
-    postId: Float,
-    title: String,
-    category: String,
-    authorId: String
+    postId: ID,
+    title: String!,
+    category: String!,
+    authorId: String!
 }
