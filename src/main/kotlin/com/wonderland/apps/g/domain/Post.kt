@@ -10,17 +10,15 @@ import javax.persistence.*
 @AllArgsConstructor
 @Entity
 @Table(name = "post")
-class Post() {
+class Post(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "post_id")
-    val postId: Long? = null
-
+    var postId: Long? = null,
     @Column(name = "title")
-    val title: String? = null
+    var title: String? = null,
     @Column(name = "category")
-    val category: String? = null
+    var category: String? = null,
     @Column(name = "author_id")
-    val authorId: String? = null
-
-}
+    var authorId: String? = null
+)

@@ -4,6 +4,7 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver
 import com.wonderland.apps.g.domain.Post
 import com.wonderland.apps.g.repository.PostRepository
 import lombok.RequiredArgsConstructor
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 /**
@@ -12,16 +13,21 @@ import org.springframework.stereotype.Component
 @Component
 @RequiredArgsConstructor
 class PostMutation:GraphQLMutationResolver {
-    private val postRepository: PostRepository? = null
+    @Autowired
+    private lateinit var postRepository: PostRepository
 
 
     /**
      * 단일 Post 등록
-     * GraphQL Schema Query: post(count: Int!, offset: Int!): List<Post>
-     * @param count: Int, offset: Int
+     * @param post: Post
      * @return
      */
-    fun createPost(post:Post): Post {
+    fun createPost(title: String, category: String, authorId: String): Post {
+        val post = Post(
+            title = title,
+            category = category,
+            authorId = authorId
+        )
         return postRepository!!.save(post);
     }
 
