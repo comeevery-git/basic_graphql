@@ -4,6 +4,7 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import com.wonderland.apps.g.domain.Post
 import com.wonderland.apps.g.repository.PostRepository
 import lombok.RequiredArgsConstructor
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 /**
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Component
 @Component
 @RequiredArgsConstructor
 class PostQuery:GraphQLQueryResolver {
-    private val postRepository: PostRepository? = null
+    @Autowired
+    private lateinit var postRepository: PostRepository
 
     /**
      * 모든 Post 조회
