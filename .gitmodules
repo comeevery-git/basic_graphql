@@ -1,0 +1,3 @@
+[submodule "project_submodule_data"]
+	path = project_submodule_data
+	url = https://github.com/comeevery-git/project_submodule_data.git
