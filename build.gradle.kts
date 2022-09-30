@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
 	id("org.springframework.boot") version "2.6.3"
@@ -49,4 +50,20 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+val jar: Jar by tasks
+val bootJar: BootJar by tasks
+
+bootJar.enabled = true
+jar.enabled = false
+
+// submodule get private data
+val copyPrivateData by tasks.registering(Copy::class) {
+	from(file("./project_submodule_data/submodule-data/aws-rds-dev/application-dev.yml"))
+	into(file("./src/main/resources"))
+}
+
+tasks.build<DefaultTask> {
+	dependsOn(copyPrivateData)
 }
